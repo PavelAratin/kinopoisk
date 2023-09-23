@@ -1,0 +1,18 @@
+.nav {
+  font-size: 18px;
+  color: #ffffff;
+}
+.nav__list {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.nav__item:not(:last-child) {
+  margin-right: 20px;
+}
+.nav__link {
+  transition: color 0.2s linear;
+}
+.nav__link:hover {
+  color: tomato;
+}

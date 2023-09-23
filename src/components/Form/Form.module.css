@@ -1,0 +1,7 @@
+.form {
+  width: 400px;
+  border-radius: 5px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}

@@ -1,0 +1,15 @@
+.button {
+  padding: 5px;
+  border: none;
+  font-size: 18px;
+  background-color: #d7d6d6;
+  align-self: stretch;
+  cursor: pointer;
+  transition:
+    background 0.2s linear,
+    color 0.2s linear;
+}
+.button:hover {
+  background-color: tomato;
+  color: #ffffff;
+}

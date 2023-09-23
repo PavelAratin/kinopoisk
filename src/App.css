@@ -1,38 +1,73 @@
-.App {
-  text-align: center;
+* {
+  box-sizing: border-box;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  color: #333;
+  background-color: #100e19;
+  margin: 0;
+  padding: 0;
+  min-width: 320px;
+  height: 100%;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+button {
+  padding: 0;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
 }
-
-.App-link {
-  color: #61dafb;
+p {
+  padding: 0;
+  margin: 0;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type='search']::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  background-image: url('../public/assets/close.svg');
+  cursor: pointer;
+}
+.swiper-slide {
+  height: auto;
+}
+.swiper-button-prev::after,
+.swiper-button-next::after {
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 40px;
+}
+.swiper-pagination-bullet {
+  width: 10px;
+  height: 10px;
+  transition: transition 0.2s linear;
+}
+.swiper-pagination-bullet-active {
+  background-color: #ffffff;
+  transform: scale(1.5);
 }
