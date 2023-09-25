@@ -1,19 +1,26 @@
 import React from 'react';
+import { Routes, Route } from 'react-router-dom';
 
-import Header from './components/Header/Header';
-import Container from './components/Layout/Container';
-import Slider from './components/Slider/Slider';
+import HomePage from './components/Pages/HomePage/HomePage';
 
 import './App.css';
-import AdvertisingBlock from './components/AdvertisingBlock/AdvertisingBlock';
+import TopFilms from './components/Pages/TopFilms/TopFilms';
+import PremierFilms from './components/Pages/PremierFilms/PremierFilms';
+import DigitalReleasFilms from './components/Pages/DigitalReleasFilms/DigitalReleasFilms';
+import NotFoundPage from './components/Pages/NotFoundPage/NotFoundPage';
+import Layout from './components/Layouts/Layout/Layout';
 function App() {
   return (
     <React.Fragment>
-      <Header></Header>
-      <Container>
-        <Slider></Slider>
-        <AdvertisingBlock></AdvertisingBlock>
-      </Container>
+      <Routes>
+        <Route path='/' element={<Layout></Layout>}>
+          <Route index path='/' element={<HomePage></HomePage>}></Route>
+          <Route path='/top' element={<TopFilms></TopFilms>}></Route>
+          <Route path='/premiers' element={<PremierFilms></PremierFilms>}></Route>
+          <Route path='/digitalReleas' element={<DigitalReleasFilms></DigitalReleasFilms>}></Route>
+          <Route path='*' element={<NotFoundPage></NotFoundPage>}></Route>
+        </Route>
+      </Routes>
     </React.Fragment>
   );
 }

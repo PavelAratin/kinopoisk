@@ -2,7 +2,8 @@
 import Button from "../Button/Button";
 import Form from "../Form/Form";
 import Input from "../Input/Input";
-import Container from "../Layout/Container";
+import Container from "../Layouts/Container/Container";
+import Logo from "../Logo/Logo";
 import Navigation from "../Navigation/Navigation";
 
 import LocalStyles from "./Header.module.css";
@@ -11,9 +12,7 @@ const Header = () => {
   return (
     <header className={LocalStyles.header}>
       <Container>
-        <a className="logo" href="#">
-          <img src="./assets/logo.svg" alt="Логотип сайта" />
-        </a>
+        <Logo></Logo>
         <Form>
           <Input type="search" placeholder="Начните искать"></Input>
           <Button type="submit" text="Найти"></Button>

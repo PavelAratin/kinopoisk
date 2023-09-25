@@ -1,4 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
+import { Link } from "react-router-dom";
 import styles from "./Navigation.module.css";
 
 const Navigation = () => {
@@ -6,19 +7,19 @@ const Navigation = () => {
     <nav className={styles.nav}>
       <ul className={styles.nav__list}>
         <li className={styles.nav__item}>
-          <a className={styles.nav__link} href="#">
+          <Link className={styles.nav__link} to="/top">
             Топ фильмов
-          </a>
+          </Link>
         </li>
         <li className={styles.nav__item}>
-          <a className={styles.nav__link} href="#">
+          <Link className={styles.nav__link} to="/premiers">
             Кинопремьеры
-          </a>
+          </Link>
         </li>
         <li className={styles.nav__item}>
-          <a className={styles.nav__link} href="#">
+          <Link className={styles.nav__link} to="/digitalRelease">
             Цифровые релизы
-          </a>
+          </Link>
         </li>
       </ul>
     </nav>
