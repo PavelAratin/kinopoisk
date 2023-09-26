@@ -1,0 +1,44 @@
+.film-list__item {
+  border-bottom: 2px solid rgba(118, 118, 118, 0.5);
+  transition: border-color 0.2s linear;
+}
+.film-list__item:hover {
+  border-color: tomato;
+}
+.film-cart {
+  color: #ffffff;
+}
+.film-cart__imgbox {
+  height: 300px;
+}
+.film-cart__img {
+  border-radius: 10px;
+}
+.film-cart__body {
+  padding: 5px;
+}
+.film-cart__title {
+  text-align: center;
+  transition: color 0.2s linear;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+.film-cart__item {
+  border-bottom: 1px solid rgba(120, 119, 119, 0.5);
+}
+.film-cart__title:hover {
+  color: tomato;
+}
+.film-cart__list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 5px;
+  font-size: 13px;
+}
+.film-cart__backlay {
+  background-color: #3bb33b;
+  padding: 5px;
+  border-radius: 5px;
+  display: block;
+  width: fit-content;
+}

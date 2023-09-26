@@ -23,8 +23,8 @@ const HomePage = () => {
         <Title text="Смотрят сейчас"></Title>
         <FilmsList>
           {allFilms &&
-            allFilms.map((film, index) => (
-              <FilmItem key={index} film={film}></FilmItem>
+            allFilms.map((film) => (
+              <FilmItem key={film.kinopoiskId} film={film}></FilmItem>
             ))}
         </FilmsList>
       </Container>
