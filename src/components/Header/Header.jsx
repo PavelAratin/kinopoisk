@@ -6,12 +6,12 @@ import Container from "../Layouts/Container/Container";
 import Logo from "../Logo/Logo";
 import Navigation from "../Navigation/Navigation";
 
-import LocalStyles from "./Header.module.css";
+import styles from "./Header.module.css";
 
 const Header = () => {
   return (
-    <header className={LocalStyles.header}>
-      <Container>
+    <header className={styles.header}>
+      <Container headerContainerClass={styles.header__container}>
         <Logo></Logo>
         <Form>
           <Input type="search" placeholder="Начните искать"></Input>

@@ -3,3 +3,10 @@
   background-color: #141414;
   margin-bottom: 30px;
 }
+.header__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}

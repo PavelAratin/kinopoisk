@@ -14,9 +14,7 @@ const Slider = () => {
       spaceBetween={10}
       slidesPerView={1}
       navigation={true}
-      pagination={{ clickable: true }}
-      onSlideChange={() => console.log("slide change")}
-      onSwiper={(swiper) => console.log(swiper)}>
+      pagination={{ clickable: true }}>
       <SwiperSlide>
         <img
           className={styles.swiper__img}
