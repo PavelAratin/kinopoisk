@@ -11,7 +11,8 @@ import Title from "../../Title/Title";
 
 const HomePage = () => {
   const dispatch = useDispatch();
-  const allFilms = useSelector((state) => state.allFilms.films.items);
+  const { error, films, status } = useSelector((state) => state.allFilms);
+  const allFilms = films.items;
   useEffect(() => {
     dispatch(fetchAllFilms());
   }, [dispatch]);
@@ -21,6 +22,9 @@ const HomePage = () => {
         <Slider></Slider>
         <AdvertisingBlock></AdvertisingBlock>
         <Title text="Смотрят сейчас"></Title>
+        {status === "loading" && <h3>Идет загрузка...</h3>}
+        {status === "rejected" && <h3>Загрузка не выполнена!</h3>}
+        {error && <h3>Ошибка: {error}</h3>}
         <FilmsList>
           {allFilms &&
             allFilms.map((film) => (

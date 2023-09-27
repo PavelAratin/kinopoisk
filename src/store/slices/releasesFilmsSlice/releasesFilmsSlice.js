@@ -1,11 +1,12 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { API_PATH_FILMS, API_PATH_MAIN } from '../../../constans/api';
+import { API_PATH_MAIN, API_RELEASES_FILMS } from '../../../constans/api';;
 
-export const fetchAllFilms = createAsyncThunk(
-  'GET_ALL_FILMS',
+
+export const fetchReleasesFilms = createAsyncThunk(
+  'GET_RELEASE_FILMS',
   async function (_, { rejectWithValue }) {
     try {
-      const response = await fetch(`${API_PATH_MAIN}${API_PATH_FILMS}`, {
+      const response = await fetch(`${API_PATH_MAIN}${API_RELEASES_FILMS}`, {
         method: "GET",
         headers: {
           "X-API-KEY": "5b5541df-cf16-4a80-a315-4df0a301f83a",
@@ -23,8 +24,8 @@ export const fetchAllFilms = createAsyncThunk(
   }
 )
 
-const filmsSlice = createSlice({
-  name: 'all_films',
+const releasesFilmsSlice = createSlice({
+  name: 'releases_films',
   initialState: {
     films: [],
     status: null,
@@ -38,19 +39,19 @@ const filmsSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(fetchAllFilms.pending, (state) => {
+      .addCase(fetchReleasesFilms.pending, (state) => {
         state.status = 'loading';
       })
-      .addCase(fetchAllFilms.fulfilled, (state, action) => {
+      .addCase(fetchReleasesFilms.fulfilled, (state, action) => {
         state.status = 'loaded';
         state.films = action.payload;
       })
-      .addCase(fetchAllFilms.rejected, (state, action) => {
+      .addCase(fetchReleasesFilms.rejected, (state, action) => {
         state.status = 'rejected';
         state.error = action.payload;
       });
   }
 })
 
-export const { addFilmActions } = filmsSlice.actions;
-export default filmsSlice.reducer;
+export const { addFilmActions } = releasesFilmsSlice.actions;
+export default releasesFilmsSlice.reducer;

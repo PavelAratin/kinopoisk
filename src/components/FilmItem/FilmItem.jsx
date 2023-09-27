@@ -1,8 +1,8 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
+import { Link } from "react-router-dom";
 import styles from "./FilmItem.module.css";
 
 const FilmItem = ({ film }) => {
-  console.log(film);
   return (
     <li className={styles["film-list__item"]}>
       <div className={styles["film-cart"]}>
@@ -14,23 +14,34 @@ const FilmItem = ({ film }) => {
           />
         </div>
         <div className={styles["film-cart__body"]}>
-          <a href="#">
-            <h2 className={styles["film-cart__title"]}>
-              {film.nameRu ?? film.nameRu ?? film.nameOriginal}
-            </h2>
-          </a>
+          {film.kinopoiskId ? (
+            <Link to={`/films/${film.kinopoiskId}`}>
+              <h2 className={styles["film-cart__title"]}>
+                {film.nameRu ?? film.nameRu ?? film.nameOriginal}
+              </h2>
+            </Link>
+          ) : (
+            <Link to={`/films/${film.filmId}`}>
+              <h2 className={styles["film-cart__title"]}>
+                {film.nameRu ?? film.nameRu ?? film.nameOriginal}
+              </h2>
+            </Link>
+          )}
           <ul className={styles["film-cart__list"]}>
             <div className="film-cart__item">
               <span>Год выпуска: </span>
               {film.year}
             </div>
-            <div className="film-cart__item">
-              {" "}
-              <span>Рейтинг Кинопоиска: </span>
-              <span className={styles["film-cart__backlay"]}>
-                {film.ratingKinopoisk}
-              </span>
-            </div>
+            {film.ratingKinopoisk ?? film.rating ? (
+              <div className="film-cart__item">
+                <span>Рейтинг Кинопоиска: </span>
+                <span className={styles["film-cart__backlay"]}>
+                  {film.ratingKinopoisk ?? film.rating}
+                </span>
+              </div>
+            ) : (
+              ""
+            )}
           </ul>
         </div>
       </div>

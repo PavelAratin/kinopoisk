@@ -1,11 +1,12 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { API_PATH_FILMS, API_PATH_MAIN } from '../../../constans/api';
+import { API_PATH_FILMS, API_PATH_MAIN, API_PREMIERS_FILMS } from '../../../constans/api';
 
-export const fetchAllFilms = createAsyncThunk(
-  'GET_ALL_FILMS',
+
+export const fetchPremierFilms = createAsyncThunk(
+  'GET_PREMIERS_FILMS',
   async function (_, { rejectWithValue }) {
     try {
-      const response = await fetch(`${API_PATH_MAIN}${API_PATH_FILMS}`, {
+      const response = await fetch(`${API_PATH_MAIN}${API_PATH_FILMS}${API_PREMIERS_FILMS}`, {
         method: "GET",
         headers: {
           "X-API-KEY": "5b5541df-cf16-4a80-a315-4df0a301f83a",
@@ -23,8 +24,8 @@ export const fetchAllFilms = createAsyncThunk(
   }
 )
 
-const filmsSlice = createSlice({
-  name: 'all_films',
+const premierFilmsSlice = createSlice({
+  name: 'premiers_films',
   initialState: {
     films: [],
     status: null,
@@ -38,19 +39,19 @@ const filmsSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(fetchAllFilms.pending, (state) => {
+      .addCase(fetchPremierFilms.pending, (state) => {
         state.status = 'loading';
       })
-      .addCase(fetchAllFilms.fulfilled, (state, action) => {
+      .addCase(fetchPremierFilms.fulfilled, (state, action) => {
         state.status = 'loaded';
         state.films = action.payload;
       })
-      .addCase(fetchAllFilms.rejected, (state, action) => {
+      .addCase(fetchPremierFilms.rejected, (state, action) => {
         state.status = 'rejected';
         state.error = action.payload;
       });
   }
 })
 
-export const { addFilmActions } = filmsSlice.actions;
-export default filmsSlice.reducer;
+export const { addFilmActions } = premierFilmsSlice.actions;
+export default premierFilmsSlice.reducer;
