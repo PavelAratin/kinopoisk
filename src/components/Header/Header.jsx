@@ -11,7 +11,7 @@ import styles from "./Header.module.css";
 const Header = () => {
   return (
     <header className={styles.header}>
-      <Container headerContainerClass={styles.header__container}>
+      <Container ContainerClass={styles.header__container}>
         <Logo></Logo>
         <Form>
           <Input type="search" placeholder="Начните искать"></Input>
