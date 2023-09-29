@@ -13,3 +13,7 @@
   background-color: tomato;
   color: #ffffff;
 }
+.button__goback {
+  border-radius: 5px;
+  margin-bottom: 30px;
+}

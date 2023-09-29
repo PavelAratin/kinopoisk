@@ -1,8 +1,12 @@
-import LocalStyles from "./Button.module.css";
+import styles from "./Button.module.css";
 
-const Button = ({ type, text }) => {
+const Button = ({ type, text, goBack, title }) => {
   return (
-    <button className={LocalStyles.button} type={type}>
+    <button
+      onClick={goBack}
+      className={`${styles.button} ${goBack ? styles.button__goback : ""}`}
+      type={type}
+      title={title}>
       {text}
     </button>
   );

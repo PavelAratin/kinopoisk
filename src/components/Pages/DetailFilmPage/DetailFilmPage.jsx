@@ -2,21 +2,33 @@ import styles from "./DetailFilmPage.module.css";
 
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { fetchDetailFilm } from "../../../store/slices/detailFilmSlice/detailFilmSlice";
 import Container from "../../Layouts/Container/Container";
+import Button from "../../Button/Button";
 
 const DetailFilmPage = () => {
   const { detailFilm } = useSelector((store) => store);
-  const singleFilm = detailFilm.films;
-  const { id } = useParams();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { id } = useParams();
+
+  const singleFilm = detailFilm.films;
+
+  const goBack = () => navigate(-1);
+
   useEffect(() => {
     dispatch(fetchDetailFilm(id));
   }, [dispatch, id]);
   return (
     <React.Fragment>
       <section className={styles.detail}>
+        <Container>
+          <Button
+            text={"Назад"}
+            goBack={goBack}
+            title="Переместиться на шаг назад"></Button>
+        </Container>
         <Container ContainerClass={styles.detail__container}>
           <div className={styles.detail__left}>
             <div className={styles.detail__imgbox}>

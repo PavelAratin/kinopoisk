@@ -12,17 +12,28 @@ import Title from "../../Title/Title";
 import FilmsList from "../../FilmsList/FilmsList";
 import FilmItem from "../../FilmItem/FilmItem";
 import EmptySearchFilm from "../../EmptySearchFilm/EmptySearchFilm";
+import { useNavigate } from "react-router-dom";
+import Button from "../../Button/Button";
 
 const PremierFilms = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const { error, films, status } = useSelector((state) => state.premierFilms);
   const premierFilms = films.items ?? films;
+
+  const goBack = () => navigate(-1);
+
   useEffect(() => {
     dispatch(fetchPremierFilms());
   }, [dispatch, error]);
   return (
     <React.Fragment>
       <Container>
+        <Button
+          text={"Назад"}
+          goBack={goBack}
+          title="Переместиться на шаг назад"></Button>
         <Slider></Slider>
         <AdvertisingBlock></AdvertisingBlock>
         <Title text="Премьеры фильмов"></Title>

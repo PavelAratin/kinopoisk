@@ -10,17 +10,27 @@ import Title from "../../Title/Title";
 import FilmsList from "../../FilmsList/FilmsList";
 import FilmItem from "../../FilmItem/FilmItem";
 import EmptySearchFilm from "../../EmptySearchFilm/EmptySearchFilm";
+import { useNavigate } from "react-router-dom";
+import Button from "../../Button/Button";
 
 const DigitalReleasFilms = () => {
-  const dispatch = useDispatch();
   const { error, status, films } = useSelector((state) => state.releasesFilms);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const digitalreleaseFilm = films.releases ?? films;
+  const goBack = () => navigate(-1);
+
   useEffect(() => {
     dispatch(fetchReleasesFilms());
   }, [dispatch]);
   return (
     <React.Fragment>
       <Container>
+        <Button
+          text={"Назад"}
+          goBack={goBack}
+          title="Переместиться на шаг назад"></Button>
         <Slider></Slider>
         <AdvertisingBlock></AdvertisingBlock>
         <Title text="Цифровые релизы"></Title>
