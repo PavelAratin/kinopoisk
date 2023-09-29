@@ -9,11 +9,12 @@ import AdvertisingBlock from "../../AdvertisingBlock/AdvertisingBlock";
 import Title from "../../Title/Title";
 import FilmsList from "../../FilmsList/FilmsList";
 import FilmItem from "../../FilmItem/FilmItem";
+import EmptySearchFilm from "../../EmptySearchFilm/EmptySearchFilm";
 
 const DigitalReleasFilms = () => {
   const dispatch = useDispatch();
   const { error, status, films } = useSelector((state) => state.releasesFilms);
-  const digitalreleaseFilm = films.releases;
+  const digitalreleaseFilm = films.releases ?? films;
   useEffect(() => {
     dispatch(fetchReleasesFilms());
   }, [dispatch]);
@@ -26,14 +27,17 @@ const DigitalReleasFilms = () => {
         {status === "loading" && <h3>Идет загрузка...</h3>}
         {status === "rejected" && <h3>Загрузка не выполнена!</h3>}
         {error && <h3>Ошибка: {error}</h3>}
-        <FilmsList>
-          {digitalreleaseFilm &&
-            digitalreleaseFilm.map((film) => (
+        {digitalreleaseFilm.length ? (
+          <FilmsList>
+            {digitalreleaseFilm.map((film) => (
               <FilmItem
                 key={film.kinopoiskId ?? film.filmId}
                 film={film}></FilmItem>
             ))}
-        </FilmsList>
+          </FilmsList>
+        ) : (
+          <EmptySearchFilm></EmptySearchFilm>
+        )}
       </Container>
     </React.Fragment>
   );

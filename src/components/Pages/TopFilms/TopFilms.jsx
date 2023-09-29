@@ -11,11 +11,13 @@ import AdvertisingBlock from "../../AdvertisingBlock/AdvertisingBlock";
 import Title from "../../Title/Title";
 import FilmsList from "../../FilmsList/FilmsList";
 import FilmItem from "../../FilmItem/FilmItem";
+import EmptySearchFilm from "../../EmptySearchFilm/EmptySearchFilm";
 
 const TopFilms = () => {
   const dispatch = useDispatch();
   const { films, error, status } = useSelector((state) => state.topFilms);
-  const topFilms = films.films;
+  const topFilms = films.films ?? films;
+  console.log(films);
   useEffect(() => {
     dispatch(fetchTopFilms());
   }, [dispatch]);
@@ -28,14 +30,17 @@ const TopFilms = () => {
         {status === "loading" && <h3>Идет загрузка...</h3>}
         {status === "rejected" && <h3>Загрузка не выполнена!</h3>}
         {error && <h3>Ошибка: {error}</h3>}
-        <FilmsList>
-          {topFilms &&
-            topFilms.map((film) => (
+        {topFilms.length ? (
+          <FilmsList>
+            {topFilms.map((film) => (
               <FilmItem
                 key={film.kinopoiskId ?? film.filmId}
                 film={film}></FilmItem>
             ))}
-        </FilmsList>
+          </FilmsList>
+        ) : (
+          <EmptySearchFilm></EmptySearchFilm>
+        )}
       </Container>
     </React.Fragment>
   );

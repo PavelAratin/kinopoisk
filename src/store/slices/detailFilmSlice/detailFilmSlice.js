@@ -18,8 +18,6 @@ export const fetchDetailFilm = createAsyncThunk(
         throw new Error("Сервер ERROR")
       }
       const data = await response.json();
-      console.log(data);
-
       return data;
     } catch (error) {
       return rejectWithValue(error.message)

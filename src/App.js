@@ -12,18 +12,16 @@ import NotFoundPage from './components/Pages/NotFoundPage/NotFoundPage';
 import Layout from './components/Layouts/Layout/Layout';
 function App() {
   return (
-    <React.Fragment>
-      <Routes>
-        <Route path='/' element={<Layout></Layout>}>
-          <Route index path='/' element={<HomePage></HomePage>}></Route>
-          <Route path='/top' element={<TopFilms></TopFilms>}></Route>
-          <Route path='/premiers' element={<PremierFilms></PremierFilms>}></Route>
-          <Route path='/digitalRelease' element={<DigitalReleasFilms></DigitalReleasFilms>}></Route>
-          <Route path='/films/:id' element={<DetailFilmPage></DetailFilmPage>}></Route>
-          <Route path='*' element={<NotFoundPage></NotFoundPage>}></Route>
-        </Route>
-      </Routes>
-    </React.Fragment>
+    <Routes>
+      <Route path='/' element={<Layout></Layout>}>
+        <Route index path='/' element={<HomePage></HomePage>}></Route>
+        <Route path='/top' element={<TopFilms></TopFilms>}></Route>
+        <Route path='/premiers' element={<PremierFilms></PremierFilms>}></Route>
+        <Route path='/digitalRelease' element={<DigitalReleasFilms></DigitalReleasFilms>}></Route>
+        <Route path='/films/:id' element={<DetailFilmPage></DetailFilmPage>}></Route>
+        <Route path='*' element={<NotFoundPage></NotFoundPage>}></Route>
+      </Route>
+    </Routes>
   );
 }
 

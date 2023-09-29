@@ -9,7 +9,6 @@ import Container from "../../Layouts/Container/Container";
 const DetailFilmPage = () => {
   const { detailFilm } = useSelector((store) => store);
   const singleFilm = detailFilm.films;
-  console.log(singleFilm);
   const { id } = useParams();
   const dispatch = useDispatch();
   useEffect(() => {
@@ -44,8 +43,8 @@ const DetailFilmPage = () => {
               <div className={styles.genres}>
                 <h3 className={styles.genres__title}>Жанр: </h3>
                 <ul>
-                  {singleFilm.genres.map((genre) => (
-                    <li>{genre.genre}</li>
+                  {singleFilm.genres.map((genre, index) => (
+                    <li key={index}>{genre.genre}</li>
                   ))}
                 </ul>
               </div>
@@ -64,8 +63,8 @@ const DetailFilmPage = () => {
               <div className={styles.genres}>
                 <h3 className={styles.genres__title}>Страна производства: </h3>
                 <ul>
-                  {singleFilm.countries.map((country) => (
-                    <li>{country.country}</li>
+                  {singleFilm.countries.map((country, index) => (
+                    <li key={index}>{country.country}</li>
                   ))}
                 </ul>
               </div>

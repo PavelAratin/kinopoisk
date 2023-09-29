@@ -16,7 +16,6 @@ export const fetchTopFilms = createAsyncThunk(
         throw new Error("Сервер ERROR")
       }
       const data = await response.json();
-
       return data;
     } catch (error) {
       return rejectWithValue(error.message)
@@ -32,9 +31,9 @@ const topFilmsSlice = createSlice({
     error: null
   },
   reducers: {
-    addFilmActions(state, action) {
-      console.log(state);
-      console.log(action);
+    serachTopFilmActions(state, action) {
+      state.films.films = state.films.films.filter((item) => String(item.nameRu).toLowerCase().replaceAll(' ', '').includes(String(action.payload).toLowerCase().replaceAll(' ', '')));
+      console.log(action.payload);
     }
   },
   extraReducers: (builder) => {
@@ -53,5 +52,5 @@ const topFilmsSlice = createSlice({
   }
 })
 
-export const { addFilmActions } = topFilmsSlice.actions;
+export const { serachTopFilmActions } = topFilmsSlice.actions;
 export default topFilmsSlice.reducer;

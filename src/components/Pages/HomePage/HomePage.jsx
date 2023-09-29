@@ -8,11 +8,12 @@ import { fetchAllFilms } from "../../../store/slices/filmsSlice/filmsSlice";
 import FilmsList from "../../FilmsList/FilmsList";
 import FilmItem from "../../FilmItem/FilmItem";
 import Title from "../../Title/Title";
+import EmptySearchFilm from "../../EmptySearchFilm/EmptySearchFilm";
 
 const HomePage = () => {
   const dispatch = useDispatch();
   const { error, films, status } = useSelector((state) => state.allFilms);
-  const allFilms = films.items;
+  const allFilms = films.items ?? films;
   useEffect(() => {
     dispatch(fetchAllFilms());
   }, [dispatch]);
@@ -25,12 +26,15 @@ const HomePage = () => {
         {status === "loading" && <h3>Идет загрузка...</h3>}
         {status === "rejected" && <h3>Загрузка не выполнена!</h3>}
         {error && <h3>Ошибка: {error}</h3>}
-        <FilmsList>
-          {allFilms &&
-            allFilms.map((film) => (
+        {allFilms.length ? (
+          <FilmsList>
+            {allFilms.map((film) => (
               <FilmItem key={film.kinopoiskId} film={film}></FilmItem>
             ))}
-        </FilmsList>
+          </FilmsList>
+        ) : (
+          <EmptySearchFilm></EmptySearchFilm>
+        )}
       </Container>
     </React.Fragment>
   );

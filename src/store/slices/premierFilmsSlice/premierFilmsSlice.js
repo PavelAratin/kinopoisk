@@ -32,9 +32,8 @@ const premierFilmsSlice = createSlice({
     error: null
   },
   reducers: {
-    addFilmActions(state, action) {
-      console.log(state);
-      console.log(action);
+    serachPremierFilmActions(state, action) {
+      state.films.items = state.films.items.filter((item) => String(item.nameRu).toLowerCase().replaceAll(' ', '').includes(String(action.payload).toLowerCase().replaceAll(' ', '')));
     }
   },
   extraReducers: (builder) => {
@@ -53,5 +52,5 @@ const premierFilmsSlice = createSlice({
   }
 })
 
-export const { addFilmActions } = premierFilmsSlice.actions;
+export const { serachPremierFilmActions } = premierFilmsSlice.actions;
 export default premierFilmsSlice.reducer;
