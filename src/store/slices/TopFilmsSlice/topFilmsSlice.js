@@ -33,7 +33,6 @@ const topFilmsSlice = createSlice({
   reducers: {
     serachTopFilmActions(state, action) {
       state.films.films = state.films.films.filter((item) => String(item.nameRu).toLowerCase().replaceAll(' ', '').includes(String(action.payload).toLowerCase().replaceAll(' ', '')));
-      console.log(action.payload);
     }
   },
   extraReducers: (builder) => {

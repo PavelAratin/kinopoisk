@@ -10,7 +10,6 @@ const FilmItem = ({ film, isFavorites }) => {
   const removeFavoriteHandler = () => {
     dispatch(removeFavoriteFilmActions(film));
   };
-  console.log(film);
   return (
     <li className={styles["film-list__item"]}>
       <div className={styles["film-cart"]}>
