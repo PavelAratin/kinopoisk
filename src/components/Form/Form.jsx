@@ -4,8 +4,8 @@ import Input from "../Input/Input";
 
 import styles from "./Form.module.css";
 import { useDispatch } from "react-redux";
-import { serachFilmActions } from "../../store/slices/filmsSlice/filmsSlice";
-import { serachTopFilmActions } from "../../store/slices/TopFilmsSlice/topFilmsSlice";
+import { serachFilmActions } from "../../store/slices/allFilmsSlice/allFilmsSlice";
+import { serachTopFilmActions } from "../../store/slices/topFilmsSlice/topFilmsSlice";
 import { useLocation } from "react-router-dom";
 import { serachPremierFilmActions } from "../../store/slices/premierFilmsSlice/premierFilmsSlice";
 import { serachReleasasFilmActions } from "../../store/slices/releasesFilmsSlice/releasesFilmsSlice";

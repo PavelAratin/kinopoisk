@@ -12,6 +12,7 @@ import FilmItem from "../../FilmItem/FilmItem";
 import EmptySearchFilm from "../../EmptySearchFilm/EmptySearchFilm";
 import { useNavigate } from "react-router-dom";
 import Button from "../../Button/Button";
+import Error from "../../Error/Error";
 
 const DigitalReleasFilms = () => {
   const { error, status, films } = useSelector((state) => state.releasesFilms);
@@ -34,9 +35,7 @@ const DigitalReleasFilms = () => {
         <Slider></Slider>
         <AdvertisingBlock></AdvertisingBlock>
         <Title text="Цифровые релизы"></Title>
-        {status === "loading" && <h3>Идет загрузка...</h3>}
-        {status === "rejected" && <h3>Загрузка не выполнена!</h3>}
-        {error && <h3>Ошибка: {error}</h3>}
+        <Error error={error} status={status}></Error>
         {digitalreleaseFilm.length ? (
           <FilmsList>
             {digitalreleaseFilm.map((film) => (

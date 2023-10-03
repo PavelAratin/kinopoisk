@@ -4,7 +4,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-import { fetchTopFilms } from "../../../store/slices/TopFilmsSlice/topFilmsSlice";
+import { fetchTopFilms } from "../../../store/slices/topFilmsSlice/topFilmsSlice";
 
 import Container from "../../Layouts/Container/Container";
 import Slider from "../../Slider/Slider";
@@ -14,6 +14,7 @@ import FilmsList from "../../FilmsList/FilmsList";
 import FilmItem from "../../FilmItem/FilmItem";
 import EmptySearchFilm from "../../EmptySearchFilm/EmptySearchFilm";
 import Button from "../../Button/Button";
+import Error from "../../Error/Error";
 
 const TopFilms = () => {
   const dispatch = useDispatch();
@@ -37,9 +38,7 @@ const TopFilms = () => {
         <Slider></Slider>
         <AdvertisingBlock></AdvertisingBlock>
         <Title text="Топ фильмов"></Title>
-        {status === "loading" && <h3>Идет загрузка...</h3>}
-        {status === "rejected" && <h3>Загрузка не выполнена!</h3>}
-        {error && <h3>Ошибка: {error}</h3>}
+        <Error error={error} status={status}></Error>
         {topFilms.length ? (
           <FilmsList>
             {topFilms.map((film) => (

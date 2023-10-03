@@ -4,11 +4,12 @@ import Container from "../../Layouts/Container/Container";
 import Slider from "../../Slider/Slider";
 import AdvertisingBlock from "../../AdvertisingBlock/AdvertisingBlock";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchAllFilms } from "../../../store/slices/filmsSlice/filmsSlice";
+import { fetchAllFilms } from "../../../store/slices/allFilmsSlice/allFilmsSlice";
 import FilmsList from "../../FilmsList/FilmsList";
 import FilmItem from "../../FilmItem/FilmItem";
 import Title from "../../Title/Title";
 import EmptySearchFilm from "../../EmptySearchFilm/EmptySearchFilm";
+import Error from "../../Error/Error";
 
 const HomePage = () => {
   const dispatch = useDispatch();
@@ -23,9 +24,7 @@ const HomePage = () => {
         <Slider></Slider>
         <AdvertisingBlock></AdvertisingBlock>
         <Title text="Смотрят сейчас"></Title>
-        {status === "loading" && <h3>Идет загрузка...</h3>}
-        {status === "rejected" && <h3>Загрузка не выполнена!</h3>}
-        {error && <h3>Ошибка: {error}</h3>}
+        <Error error={error} status={status}></Error>
         {allFilms.length ? (
           <FilmsList>
             {allFilms.map((film) => (

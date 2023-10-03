@@ -21,6 +21,11 @@ const Navigation = () => {
             Цифровые релизы
           </Link>
         </li>
+        <li className={styles.nav__item}>
+          <Link className={styles.nav__link} to="/favorites">
+            Избранное
+          </Link>
+        </li>
       </ul>
     </nav>
   );

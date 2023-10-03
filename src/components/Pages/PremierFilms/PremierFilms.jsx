@@ -14,6 +14,7 @@ import FilmItem from "../../FilmItem/FilmItem";
 import EmptySearchFilm from "../../EmptySearchFilm/EmptySearchFilm";
 import { useNavigate } from "react-router-dom";
 import Button from "../../Button/Button";
+import Error from "../../Error/Error";
 
 const PremierFilms = () => {
   const dispatch = useDispatch();
@@ -37,9 +38,7 @@ const PremierFilms = () => {
         <Slider></Slider>
         <AdvertisingBlock></AdvertisingBlock>
         <Title text="Премьеры фильмов"></Title>
-        {status === "loading" && <h3>Идет загрузка...</h3>}
-        {status === "rejected" && <h3>Загрузка не выполнена!</h3>}
-        {error && <h3>Ошибка: {error}</h3>}
+        <Error error={error} status={status}></Error>
         {premierFilms.length ? (
           <FilmsList>
             {premierFilms.map((film) => (

@@ -1,0 +1,8 @@
+.error {
+  padding: 5px;
+  text-align: center;
+}
+.error__title {
+  color: #ffffff;
+  padding: 5px;
+}

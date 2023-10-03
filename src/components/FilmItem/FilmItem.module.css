@@ -7,6 +7,9 @@
 }
 .film-cart {
   color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 .film-cart__imgbox {
   height: 300px;
@@ -41,4 +44,18 @@
   border-radius: 5px;
   display: block;
   width: fit-content;
+}
+.favorites {
+  border: none;
+  outline: none;
+  padding: 0;
+  background-color: transparent;
+  cursor: pointer;
+  margin-top: auto;
+}
+.favorites svg path {
+  transition: fill 0.2s linear;
+}
+.favorites svg:hover path {
+  fill: tomato;
 }

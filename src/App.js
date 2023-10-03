@@ -10,6 +10,7 @@ import DigitalReleasFilms from './components/Pages/DigitalReleasFilms/DigitalRel
 import DetailFilmPage from './components/Pages/DetailFilmPage/DetailFilmPage'
 import NotFoundPage from './components/Pages/NotFoundPage/NotFoundPage';
 import Layout from './components/Layouts/Layout/Layout';
+import FavoritesPage from './components/Pages/FavoritesPage/FavoritesPage';
 function App() {
   return (
     <Routes>
@@ -18,6 +19,7 @@ function App() {
         <Route path='/top' element={<TopFilms></TopFilms>}></Route>
         <Route path='/premiers' element={<PremierFilms></PremierFilms>}></Route>
         <Route path='/digitalRelease' element={<DigitalReleasFilms></DigitalReleasFilms>}></Route>
+        <Route path='/favorites' element={<FavoritesPage></FavoritesPage>}></Route>
         <Route path='/films/:id' element={<DetailFilmPage></DetailFilmPage>}></Route>
         <Route path='*' element={<NotFoundPage></NotFoundPage>}></Route>
       </Route>
