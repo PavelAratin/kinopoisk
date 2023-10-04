@@ -12,20 +12,29 @@ import { addFavoriteFilmActions } from "../../../store/slices/toggleFavoteFilmsS
 const DetailFilmPage = () => {
   const [isFavoriteFilm, setIsFavoriteFilm] = useState(false);
   const singleFilm = useSelector((store) => store.detailFilm.films);
+  const storefavoriteFilms = useSelector((store) => store.favoriteFilms);
+  // setIsFavoriteFilm(
+  //   store.some((item) => item.kinopoiskId === singleFilm.kinopoiskId)
+  // );
+  // console.log(singleFilm);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { id } = useParams();
 
   const addToFavoriteHandler = () => {
     dispatch(addFavoriteFilmActions(singleFilm));
-    setIsFavoriteFilm(true);
   };
 
   const goBack = () => navigate(-1);
 
   useEffect(() => {
     dispatch(fetchDetailFilm(id));
-  }, [dispatch, id]);
+    setIsFavoriteFilm(
+      storefavoriteFilms.some(
+        (item) => item.kinopoiskId === singleFilm.kinopoiskId
+      )
+    );
+  }, [dispatch, id, isFavoriteFilm, storefavoriteFilms]);
   return (
     <React.Fragment>
       <section className={styles.detail}>
@@ -90,7 +99,8 @@ const DetailFilmPage = () => {
             <button
               className={styles.favorites}
               onClick={addToFavoriteHandler}
-              title="Добавить в избранное">
+              title="Добавить в избранное"
+              disabled={isFavoriteFilm}>
               <svg viewBox="0 0 128 128" width="40px" height="40px">
                 <path
                   fill={`${isFavoriteFilm ? "#ff6347" : "#ffffff"}`}
