@@ -1,25 +1,25 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import styles from "./DetailFilmPage.module.css";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { fetchDetailFilm } from "../../../store/slices/detailFilmSlice/detailFilmSlice";
-import Container from "../../Layouts/Container/Container";
-import Button from "../../Button/Button";
 import { addFavoriteFilmActions } from "../../../store/slices/toggleFavoteFilmsSlice/toggleFavoriteFilmsSlice";
 
+import Container from "../../Layouts/Container/Container";
+import Button from "../../Button/Button";
+
 const DetailFilmPage = () => {
-  const [isFavoriteFilm, setIsFavoriteFilm] = useState(false);
   const singleFilm = useSelector((store) => store.detailFilm.films);
   const storefavoriteFilms = useSelector((store) => store.favoriteFilms);
-  // setIsFavoriteFilm(
-  //   store.some((item) => item.kinopoiskId === singleFilm.kinopoiskId)
-  // );
-  // console.log(singleFilm);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { id } = useParams();
+
+  const isFavoriteFilm = storefavoriteFilms.some(
+    (item) => item.kinopoiskId === singleFilm.kinopoiskId
+  );
 
   const addToFavoriteHandler = () => {
     dispatch(addFavoriteFilmActions(singleFilm));
@@ -29,12 +29,7 @@ const DetailFilmPage = () => {
 
   useEffect(() => {
     dispatch(fetchDetailFilm(id));
-    setIsFavoriteFilm(
-      storefavoriteFilms.some(
-        (item) => item.kinopoiskId === singleFilm.kinopoiskId
-      )
-    );
-  }, [dispatch, id, isFavoriteFilm, storefavoriteFilms]);
+  }, [dispatch, id]);
   return (
     <React.Fragment>
       <section className={styles.detail}>
@@ -99,7 +94,11 @@ const DetailFilmPage = () => {
             <button
               className={styles.favorites}
               onClick={addToFavoriteHandler}
-              title="Добавить в избранное"
+              title={
+                isFavoriteFilm
+                  ? "Добавлено в избранное"
+                  : "Добавить в избранное"
+              }
               disabled={isFavoriteFilm}>
               <svg viewBox="0 0 128 128" width="40px" height="40px">
                 <path
